@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rorschach Test</title>
+    <style>
+        /* Reset Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* Ensure the body takes up the full height */
+        }
+
+        /* A: Header Section */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 120px;
+            background-color: black;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            z-index: 10; /* Higher layer */
+        }
+
+        .logo {
+            font-size: 24px;
+            color: white;
+        }
+
+        .nav {
+            display: flex;
+            gap: 10px;
+        }
+
+        .nav button {
+            padding: 10px 20px;
+            background-color: lightgray;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .nav button:hover {
+            transform: scale(1.1);
+        }
+
+        /* Sidebar (1c) */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            width: 100px;
+            background-color: rgb(120, 120, 120);
+            z-index: 1; /* Lower layer */
+        }
+
+        .sidebar-left {
+            left: 0;
+        }
+
+        .sidebar-right {
+            right: 0;
+        }
+
+        /* D: Content Section */
+        .content {
+            flex: 1; /* Push the footer to the bottom */
+            margin-top: 140px; /* Leave space for the fixed header */
+            margin-left: 120px; /* Prevent overlap with left sidebar */
+            margin-right: 120px; /* Prevent overlap with right sidebar */
+            padding: 20px;
+            z-index: 5; /* In between header/footer and sidebar */
+                    
+        }
+
+        /* Footer Section */
+        .footer {
+            height: 120px;
+            background-color: black;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10; /* Higher layer */
+        }
+
+        .footer-text {
+            font-size: 16px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <div class="header">
+        <div class="logo">Rorschach Test</div>
+        <div class="nav">
+            <button id="btn1b">About</button>
+            <button id="btn2b">Test</button>
+            <button id="btn3b">pleses click</button>
+        </div>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="sidebar sidebar-left"></div>
+    <div class="sidebar sidebar-right"></div>
+
+    <!-- Content Section -->
+    <div class="content" id="content">
+        <h1>ยินดีต้อนรับสู่เว็บไซต์แบบทดสอบหมึกหยด</h1>
+        <p>นี่คือเว็บไซต์แบบทดสอบหมึกหยด โปรดเลือกปุ่มด้านบนเพื่อดูเนื้อหาที่มาของแบบทดสอบ ทำแบบทดสอบ หรือทำแบบสอบถามเกี่ยวกับเว็บไซต์</p>
+      
+    </div>
+
+    <!-- Footer Section -->
+    <div class="footer">
+        <div class="footer-text">
+             Rorschach Test Website
+        </div>
+    </div>
+
+    <script>
+        // Buttons functionality
+        const content = document.getElementById("content");
+        document.getElementById("btn1b").addEventListener("click", () => {
+            content.innerHTML = `
+                <h1>ต่อไปนี้คือประวัติที่มาของแบบทดสอบนี้:</h1>
+                <h2>แบบทดสอบรอร์ชาค (Rorschach Inkblot Test) เป็นหนึ่งในเครื่องมือวัดทางจิตวิทยาที่มีชื่อเสียงที่สุดในประวัติศาสตร์ และถูกพัฒนาขึ้นในต้นศตวรรษที่ 20 เพื่อประเมินบุคลิกภาพและความคิดเชิงลึกของบุคคลผ่านการตีความภาพหมึกที่มีความกำกวม</h2><br><br>
+                <h3>ที่มาของแนวคิดการใช้หมึกเพื่อประเมินจิตใจ</h3>
+                <p>• การใช้ภาพหมึกเพื่อกระตุ้นความคิดและจินตนาการไม่ใช่เรื่องใหม่ โดยแนวคิดนี้มีรากฐานมาจากการเล่นที่เรียกว่า Klecksographie ในศตวรรษที่ 19 ซึ่งเป็นการหยดหมึกลงบนกระดาษแล้วพับครึ่งเพื่อสร้างภาพสมมาตร จากนั้นให้ผู้ดูภาพจินตนาการถึงสิ่งที่เห็น</p>
+                <p>• ในปลายศตวรรษที่ 19 นักจิตวิทยาหลายคนเริ่มสนใจใช้ภาพหมึกในงานวิจัย โดยเฉพาะในการศึกษาความคิดสร้างสรรค์และบุคลิกภาพ แต่ไม่มีการสร้างแบบทดสอบที่มีโครงสร้างชัดเจนจนถึงช่วงต้นศตวรรษที่ 20</p><br>
+                <h3>ฮอร์มันน์ รอร์ชาค และการพัฒนาแบบทดสอบ</h3>
+                <p> • ฮอร์มันน์ รอร์ชาค (Hermann Rorschach) เกิดเมื่อวันที่ 8 พฤศจิกายน ค.ศ. 1884 ในประเทศสวิตเซอร์แลนด์ เป็นจิตแพทย์ผู้สนใจในจิตวิเคราะห์และการศึกษาภาพลวงตา</p>
+                <p> • รอร์ชาคได้รับแรงบันดาลใจจาก Klecksographie และเริ่มทดลองใช้ภาพหมึกเพื่อศึกษาวิธีการคิดของผู้ป่วยจิตเวชในช่วงที่เขาทำงานเป็นจิตแพทย์</p>
+                <p> • ในปี ค.ศ. 1921 รอร์ชาคได้ตีพิมพ์ผลงานชื่อ “Psychodiagnostik” ซึ่งอธิบายกระบวนการใช้ภาพหมึกเพื่อประเมินบุคลิกภาพและโรคทางจิตเวช หนังสือเล่มนี้กลายเป็นพื้นฐานของแบบทดสอบรอร์ชาค</p><br>
+                <h3>หลักการพื้นฐานของแบบทดสอบ</h3>
+                <p>แบบทดสอบรอร์ชาคประกอบด้วยภาพหมึกทั้งหมด 10 ภาพ (5 ภาพเป็นขาวดำ และอีก 5 ภาพมีสี) ผู้ทดสอบจะได้รับคำแนะนำให้บอกว่าสิ่งที่เห็นในภาพคืออะไร โดยคำตอบจะถูกวิเคราะห์ในหลายมิติ เช่น:</p>
+                <p> 1. รูปทรงและรายละเอียด: ผู้ตอบมองเห็นภาพในลักษณะใด</p>
+                <p> 2. การเชื่อมโยงส่วนต่าง ๆ ของภาพ: วิธีที่ผู้ตอบตีความเชื่อมโยงส่วนของภาพ</p>
+                <p> 3. ความคิดสร้างสรรค์หรือความเป็นจริง: คำตอบสะท้อนความคิดที่สอดคล้องกับความเป็นจริงหรือไม่</p><br>
+                <h3>การพัฒนาและการใช้งานในปัจจุบัน</h3>
+                <p> • หลังจากการเสียชีวิตของรอร์ชาคในปี ค.ศ. 1922 นักจิตวิทยาคนอื่น ๆ ได้พัฒนาแบบทดสอบนี้ต่อ โดยมีการสร้างระบบการให้คะแนน เช่น ระบบของ John Exner ที่เรียกว่า Comprehensive System ซึ่งเป็นมาตรฐานที่ใช้กันอย่างแพร่หลายในปัจจุบัน</p>
+                <p> • แบบทดสอบรอร์ชาคถูกใช้ในหลายบริบท เช่น การประเมินจิตเวช การคัดเลือกบุคลากร และการศึกษาทางจิตวิทยาวิจัย อย่างไรก็ตาม มีการโต้แย้งเกี่ยวกับความน่าเชื่อถือและความเที่ยงตรงของแบบทดสอบในงานวิจัยบางส่วน</p><br><br><br><br><br><br><br><br><br>
+                <h3>แหล่งข้อมูลอ้างอิง</h3>
+                <p>1. หนังสือและงานวิจัย:</p>
+                <p> • Rorschach, H. (1921). Psychodiagnostik. Bern: Ernst Bircher.</p>
+                <p> • Exner, J. E. (1993). The Rorschach: A Comprehensive System. Wiley.</p><br>
+                <p>2. บทความวิชาการ:</p>
+                <p> • Viglione, D. J. (1999). “A review of the Rorschach Comprehensive System.” Journal of Personality Assessment.</p>
+                <p> • Mihura, J. L., et al. (2013). “The validity of individual Rorschach variables.” Psychological Bulletin.</p><br>
+                <p>3. เว็บไซต์:</p>
+                <p> • American Psychological Association (APA): www.apa.org</p>
+                <p> • International Society for the Rorschach and Projective Methods: www.rorschach.com</p>
+            
+            `;
+        });
+
+        // Rorschach Test Button
+        document.getElementById("btn2b").addEventListener("click", () => {
+         
+        });
+
+        // Other Site Button
+        document.getElementById("btn3b").addEventListener("click", () => {
+            
+        });
+
+        // Function for test submission
+        function submitTest() {
+            const response = document.getElementById("response1").value;
+            localStorage.setItem("rorschachResponse", response); // Store response
+            window.location.href = "result.html"; // Redirect to results page
+        }
+
+        document.getElementById("btn3b").addEventListener("click", () => {
+            window.location.href = "https://docs.google.com/forms/d/e/1FAIpQLScARoKBa_UlvZhy7Uho1YlUvjugCcD9N_Wyh8AJHEuymWJlsw/viewform?usp=header";
+        });
+        document.getElementById("btn2b").addEventListener("click", () => {
+            window.location.href = "https://openpsychometrics.org/tests/HEMCR/1.php";
+        });
+    </script>
+</body>
+</html>
+
