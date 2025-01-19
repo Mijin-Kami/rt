@@ -1,143 +1,188 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="th">
+    <audio autoplay loop>
+        <source src=relax-instrumental.mp3>
+    </audio>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rorschach Test</title>
     <style>
-        /* Reset Styles */
-        * {
+        body {
+            font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
+            background-color: #f4f4f4;
+            color: #333;
             display: flex;
             flex-direction: column;
-            min-height: 100vh; /* Ensure the body takes up the full height */
+            min-height: 100vh;
         }
 
-        /* A: Header Section */
-        .header {
+        header {
+            background-color: #222;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+        }
+
+        header .logo {
+            font-size: 1.5em;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        nav {
+            display: flex;
+            gap: 15px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: white;
+            font-size: 1em;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: #444;
+        }
+
+        main {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            text-align: center;
+        }
+
+        footer {
+            background-color: #222;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .content {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .test-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .test-form label {
+            font-weight: bold;
+        }
+
+        .test-form input[type="text"],
+        .test-form textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .test-form button {
+            padding: 10px 20px;
+            background-color: #222;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .test-form button:hover {
+            background-color: #444;
+        }
+
+        .test-result {
+            font-size: 1.2em;
+            margin-top: 20px;
+        }
+
+        .background {
+            background-image: url('https://source.unsplash.com/800x600/?inkblot,abstract');
+            background-size: cover;
+            background-position: center;
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            height: 120px;
-            background-color: black;
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 20px;
-            z-index: 10; /* Higher layer */
-        }
-
-        .logo {
-            font-size: 24px;
-            color: white;
-        }
-
-        .nav {
-            display: flex;
-            gap: 10px;
-        }
-
-        .nav button {
-            padding: 10px 20px;
-            background-color: lightgray;
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .nav button:hover {
-            transform: scale(1.1);
-        }
-
-        /* Sidebar (1c) */
-        .sidebar {
-            position: fixed;
-            top: 0;
-            bottom: 0;
-            width: 100px;
-            background-color: rgb(120, 120, 120);
-            z-index: 1; /* Lower layer */
-        }
-
-        .sidebar-left {
-            left: 0;
-        }
-
-        .sidebar-right {
-            right: 0;
-        }
-
-        /* D: Content Section */
-        .content {
-            flex: 1; /* Push the footer to the bottom */
-            margin-top: 140px; /* Leave space for the fixed header */
-            margin-left: 120px; /* Prevent overlap with left sidebar */
-            margin-right: 120px; /* Prevent overlap with right sidebar */
-            padding: 20px;
-            z-index: 5; /* In between header/footer and sidebar */
-                    
-        }
-
-        /* Footer Section */
-        .footer {
-            height: 120px;
-            background-color: black;
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 10; /* Higher layer */
-        }
-
-        .footer-text {
-            font-size: 16px;
-            text-align: center;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.2;
         }
     </style>
-</head>
-<body>
-    <!-- Header Section -->
-    <div class="header">
-        <div class="logo">Rorschach Test</div>
-        <div class="nav">
-            <button id="btn1b">About</button>
-            <button id="btn2b">Test</button>
-            <button id="btn3b">pleses click</button>
-        </div>
-    </div>
-
-    <!-- Sidebar -->
-    <div class="sidebar sidebar-left"></div>
-    <div class="sidebar sidebar-right"></div>
-
-    <!-- Content Section -->
-    <div class="content" id="content">
-        <h1>ยินดีต้อนรับสู่เว็บไซต์แบบทดสอบหมึกหยด</h1>
-        <p>นี่คือเว็บไซต์แบบทดสอบหมึกหยด โปรดเลือกปุ่มด้านบนเพื่อดูเนื้อหาที่มาของแบบทดสอบ ทำแบบทดสอบ หรือทำแบบสอบถามเกี่ยวกับเว็บไซต์</p>
-      
-    </div>
-
-    <!-- Footer Section -->
-    <div class="footer">
-        <div class="footer-text">
-             Rorschach Test Website
-        </div>
-    </div>
-
     <script>
-        // Buttons functionality
-        const content = document.getElementById("content");
-        document.getElementById("btn1b").addEventListener("click", () => {
-            content.innerHTML = `
+        function showContent(sectionId) {
+            document.querySelectorAll('.content').forEach(section => {
+                section.classList.add('hidden');
+            });
+            document.getElementById(sectionId).classList.remove('hidden');
+        }
+
+        function redirectExternal(url) {
+            window.location.href = url;
+        }
+
+        function submitTest() {
+            const name = document.getElementById('user-name').value;
+            const response = document.getElementById('user-response').value;
+
+            if (!name || !response) {
+                alert('กรุณากรอกข้อมูลให้ครบถ้วน!');
+                return;
+            }
+
+            const resultMessage = `ขอบคุณ ${name} ที่เข้าร่วมแบบทดสอบ! คำตอบของคุณได้รับการบันทึกแล้ว.`;
+            document.getElementById('test-result').innerText = resultMessage;
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            showContent('home');
+        });
+    </script>
+</head>
+
+<body>
+    <div class="background"></div>
+
+    <header>
+        <div class="logo" onclick="showContent('home')">Rorschach Test</div>
+        <nav>
+            <a href="#" onclick="showContent('about')">เกี่ยวกับ</a>
+            <a href="#" onclick="redirectExternal('https://www.idrlabs.com/th/rorschach/test.php')">ทำแบบทดสอบ</a>
+            <a href="#" onclick="redirectExternal ('https://docs.google.com/forms/d/e/1FAIpQLScARoKBa_UlvZhy7Uho1YlUvjugCcD9N_Wyh8AJHEuymWJlsw/viewform?usp=header')">กรุณากด</a>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Home Section -->
+        <div id="home" class="content">
+            <h1>ยินดีต้อนรับสู่เว็บไซต์แบบทดสอบหมึกหยด</h1>
+            <p>นี่คือเว็บไซต์แบบทดสอบหมึกหยด โปรดเลือกปุ่มด้านบนเพื่อดูเนื้อหาที่มาของแบบทดสอบ ทำแบบทดสอบ หรือทำแบบสอบถามเกี่ยวกับเว็บไซต์</p>
+        </div>
+
+        <!-- About Section -->
+        <div id="about" class="content hidden">
+            <h1>เกี่ยวกับ</h1>
+            <p>
+                ต่อไปนี้คือประวัติที่มาของแบบทดสอบนี้:
+            </p>
                 <h1>ต่อไปนี้คือประวัติที่มาของแบบทดสอบนี้:</h1>
                 <h2>แบบทดสอบรอร์ชาค (Rorschach Inkblot Test) เป็นหนึ่งในเครื่องมือวัดทางจิตวิทยาที่มีชื่อเสียงที่สุดในประวัติศาสตร์ และถูกพัฒนาขึ้นในต้นศตวรรษที่ 20 เพื่อประเมินบุคลิกภาพและความคิดเชิงลึกของบุคคลผ่านการตีความภาพหมึกที่มีความกำกวม</h2><br><br>
                 <h3>ที่มาของแนวคิดการใช้หมึกเพื่อประเมินจิตใจ</h3>
@@ -165,34 +210,15 @@
                 <p>3. เว็บไซต์:</p>
                 <p> • American Psychological Association (APA): www.apa.org</p>
                 <p> • International Society for the Rorschach and Projective Methods: www.rorschach.com</p>
-            
-            `;
-        });
+        </div>
 
-        // Rorschach Test Button
-        document.getElementById("btn2b").addEventListener("click", () => {
-         
-        });
 
-        // Other Site Button
-        document.getElementById("btn3b").addEventListener("click", () => {
-            
-        });
+    
+    </main>
 
-        // Function for test submission
-        function submitTest() {
-            const response = document.getElementById("response1").value;
-            localStorage.setItem("rorschachResponse", response); // Store response
-            window.location.href = "result.html"; // Redirect to results page
-        }
-
-        document.getElementById("btn3b").addEventListener("click", () => {
-            window.location.href = "https://docs.google.com/forms/d/e/1FAIpQLScARoKBa_UlvZhy7Uho1YlUvjugCcD9N_Wyh8AJHEuymWJlsw/viewform?usp=header";
-        });
-        document.getElementById("btn2b").addEventListener("click", () => {
-            window.location.href = "https://openpsychometrics.org/tests/HEMCR/1.php";
-        });
-    </script>
+    <footer>
+        <p>Rorschach Test Website</p>
+    </footer>
 </body>
-</html>
 
+</html>
